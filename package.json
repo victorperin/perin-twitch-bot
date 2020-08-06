@@ -1,0 +1,23 @@
+{
+  "name": "twitch-bot",
+  "version": "0.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "Victor Perin",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^26.0.8",
+    "@types/ws": "^7.2.6",
+    "jest": "^26.2.2",
+    "ts-jest": "^26.1.4",
+    "typescript": "^3.9.7"
+  },
+  "dependencies": {
+    "ws": "^7.3.1"
+  }
+}
