@@ -11,4 +11,6 @@ describe('Telegram command', () => {
 
         expect(chat.say).toBeCalledWith(channel, TELEGRAM_CHANNEL_URL)
     })
+
+    // TODO: if say command fails?
 })
