@@ -3,7 +3,7 @@ import onReceivePrivateMessages from './on-receive-messages'
 import { channel, chat } from './bot'
 
 const runBot = async (): Promise<void> => {
-    chat.on(Chat.Events.PRIVATE_MESSAGE, onReceivePrivateMessages(chat, channel))
+    chat.on(Chat.Events.PRIVATE_MESSAGE, onReceivePrivateMessages)
 
     await chat.connect()
     await chat.join(channel)
