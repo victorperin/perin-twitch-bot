@@ -1,5 +1,4 @@
 import TwitchJs, { Chat } from 'twitch-js'
-import runBot, { disconnect } from '../../src/run-bot'
 import { promisify } from 'util'
 
 const sleep = promisify(setTimeout)
@@ -15,7 +14,9 @@ const testBotOptions = {
 }
 
 const BOT_CHANNEL = 'victor_perin_bot'
+process.env.TWITCH_CHANNEL = BOT_CHANNEL
 
+import runBot, { disconnect } from '../../src/run-bot'
 
 it('should respond to !telegram', async () => {
     const { chat: testBotChat } = new TwitchJs(testBotOptions)
@@ -27,7 +28,7 @@ it('should respond to !telegram', async () => {
         expect(event.message).toBe('https://t.me/perin_na_twitch')
     })
 
-    await runBot(BOT_CHANNEL)
+    await runBot()
 
     await sleep(500)
 
