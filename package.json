@@ -18,6 +18,8 @@
     "typescript": "^3.9.7"
   },
   "dependencies": {
+    "@types/ramda": "github:types/npm-ramda#dist",
+    "ramda": "^0.27.1",
     "twitch-js": "^2.0.0-beta.33",
     "ws": "^7.3.1"
   }
