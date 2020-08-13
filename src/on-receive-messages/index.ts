@@ -4,17 +4,22 @@ import telegramCommand from './commands/telegram'
 
 const commands = {
     'telegram': telegramCommand,
+    default: (args: string) => {},
 }
 
-const EVENT_REGEX_STRUCTURE = /^!(\w+)(( \w+)*)$/i
-
 const onReceivePrivateMessages = async (event: PrivateMessages): Promise<void> => {
-    if (!event.message.startsWith('!')) return
+    if (
+        !event.message.startsWith('!') ||
+        event.message.length > 500
+    ) return
 
-    const [_, command, commandsArgumentsAsOneString] = event.message.match(EVENT_REGEX_STRUCTURE)
-    const commandArguments = commandsArgumentsAsOneString.trim().split(' ')
+    const [ command ] = event.message.substring(1).split(' ', 1)
+    const argumentsAsString = event.message.substr(command.length + 2)
 
-    return commands[command]?.(commandArguments)
+    console.log(`command: ${command}, arguments:${argumentsAsString}, object: ${commands[command]}`)
+
+
+    return (commands[command] || commands.default)?.(argumentsAsString)
 }
 
 export default onReceivePrivateMessages
