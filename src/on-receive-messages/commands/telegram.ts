@@ -1,4 +1,4 @@
-import { chat, channel } from '../../bot'
+import { chat, channel } from '../../interfaces/chatbot'
 
 export const TELEGRAM_CHANNEL_URL = 'https://t.me/perin_na_twitch'
 
