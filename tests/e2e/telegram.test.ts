@@ -16,7 +16,7 @@ const testBotOptions = {
 const BOT_CHANNEL = 'victor_perin_bot'
 process.env.TWITCH_CHANNEL = BOT_CHANNEL
 
-import runBot, { disconnect } from '../../src/run-bot'
+import { start,  stop } from '../../src/interfaces/chatbot'
 
 it('should respond to !telegram', async () => {
     const { chat: testBotChat } = new TwitchJs(testBotOptions)
@@ -28,7 +28,7 @@ it('should respond to !telegram', async () => {
         expect(event.message).toBe('https://t.me/perin_na_twitch')
     })
 
-    await runBot()
+    await start()
 
     await sleep(500)
 
@@ -37,7 +37,7 @@ it('should respond to !telegram', async () => {
     await sleep(500)
 
     testBotChat.disconnect()
-    disconnect()
+    stop()
     expect.hasAssertions()
 
 })

@@ -1,7 +1,7 @@
 import { chat } from '.'
 import { Chat } from 'twitch-js'
 
-describe('bot singleton', () => {
+describe('chatbot', () => {
     describe('chat', () => {
         it('should aways be the same instance of chat element', async () => {
             const oneChatInstance = await import('.').then(x => x.chat)
