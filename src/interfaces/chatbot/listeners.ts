@@ -1,5 +1,5 @@
 import { Chat } from 'twitch-js'
-import { chat } from '.'
+import { chat } from './chat'
 import onReceivePrivateMessages from '../../on-receive-messages'
 
 export default () => {
