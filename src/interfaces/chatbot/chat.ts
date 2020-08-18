@@ -13,8 +13,3 @@ const twitchAuth = {
 
 export const { chat } = new TwitchJs(twitchAuth)
 export const channel = TWITCH_CHANNEL
-
-export const stop = (): void => {
-    chat.removeAllListeners()
-    chat.disconnect()
-}
