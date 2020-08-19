@@ -12,13 +12,14 @@
   "license": "MIT",
   "devDependencies": {
     "@types/jest": "^26.0.8",
+    "@types/ramda": "github:types/npm-ramda#dist",
     "@types/ws": "^7.2.6",
     "jest": "^26.2.2",
+    "jest-extended": "^0.11.5",
     "ts-jest": "^26.1.4",
     "typescript": "^3.9.7"
   },
   "dependencies": {
-    "@types/ramda": "github:types/npm-ramda#dist",
     "ramda": "^0.27.1",
     "twitch-js": "^2.0.0-beta.33",
     "ws": "^7.3.1"

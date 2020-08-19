@@ -1,15 +1,18 @@
+process.env.TWITCH_CHANNEL = 'biruleibe'
+
+import { mocked } from 'ts-jest/utils'
+import { chat, channel } from '../../interfaces/chatbot'
+
 import telegramCommand, { TELEGRAM_CHANNEL_URL } from './telegram'
-import { Chat } from 'twitch-js'
+
+const chatMocked = mocked(chat, true)
+jest.mock('../../interfaces/chatbot')
 
 describe('Telegram command', () => {
     it('should say to chat the URL', () => {
-        const chat = new Chat({})
-        chat.say = jest.fn()
+        telegramCommand('')
 
-        const channel = 'biruleibe'
-        telegramCommand([], chat, channel)
-
-        expect(chat.say).toBeCalledWith(channel, TELEGRAM_CHANNEL_URL)
+        expect(chatMocked.say).toBeCalledWith(channel, TELEGRAM_CHANNEL_URL)
     })
 
     // TODO: if say command fails?

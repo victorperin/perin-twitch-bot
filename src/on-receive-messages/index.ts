@@ -1,22 +1,24 @@
-import { curry } from "ramda"
-import { Chat, PrivateMessages } from "twitch-js"
+import { PrivateMessages } from "twitch-js"
 
 import telegramCommand from './commands/telegram'
+import telegram from "./commands/telegram"
 
-const commands = {
-    'telegram': telegramCommand,
+const commands = new Map()
+commands.set('default', (args: string) => {})
+commands.set('telegram', telegramCommand)
+
+const onReceivePrivateMessages = async (event: PrivateMessages): Promise<void> => {
+    if (
+        !event.message.startsWith('!') ||
+        event.message.length > 500
+    ) return
+
+    const [ command ] = event.message.substring(1).split(' ', 1)
+    const argumentsAsString = event.message.substr(command.length + 2)
+
+    const functionToBeExecuted = commands.get(command) || commands.get('default')
+
+    return functionToBeExecuted(argumentsAsString)
 }
 
-const EVENT_REGEX_STRUCTURE = /^!(\w+)(( \w+)*)$/i
-
-const onReceivePrivateMessages = async (chat: Chat, channel: ChannelName, event: PrivateMessages): Promise<void> => {
-    if (!event.message.startsWith('!')) return
-
-    const [_, command, commandsArgumentsAsOneString] = event.message.match(EVENT_REGEX_STRUCTURE)
-    const commandArguments = commandsArgumentsAsOneString.trim().split(' ')
-
-    return commands[command]?.(commandArguments, chat, channel)
-}
-
-export type ChannelName = string
-export default curry(onReceivePrivateMessages)
+export default onReceivePrivateMessages

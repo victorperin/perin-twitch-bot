@@ -1,3 +1,3 @@
-import runBot from './run-bot'
+import { start } from './interfaces/chatbot'
 
-runBot('victor_perin')
+start()
