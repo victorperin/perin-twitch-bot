@@ -16,9 +16,6 @@ const onReceivePrivateMessages = async (event: PrivateMessages): Promise<void> =
     const [ command ] = event.message.substring(1).split(' ', 1)
     const argumentsAsString = event.message.substr(command.length + 2)
 
-    console.log(`command: ${command}, arguments:${argumentsAsString}, object: ${commands[command]}`)
-
-
     return (commands[command] || commands.default)?.(argumentsAsString)
 }
 
