@@ -26,6 +26,4 @@ describe('Telegram command', () => {
 
         
     })
-
-    // TODO: if say command fails?
 })
