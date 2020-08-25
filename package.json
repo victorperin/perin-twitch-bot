@@ -4,6 +4,7 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
+    "linter": "eslint .",
     "build": "tsc",
     "test": "jest"
   },
