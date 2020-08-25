@@ -9,16 +9,16 @@ beforeEach(jest.resetAllMocks)
 import stop from './stop'
 
 it('should removeAllListeners', () => {
-    stop()
+  stop()
 
-    expect(chatMocked.removeAllListeners).toBeCalledWith()
-    expect(chatMocked.removeAllListeners).toBeCalledTimes(1)
+  expect(chatMocked.removeAllListeners).toBeCalledWith()
+  expect(chatMocked.removeAllListeners).toBeCalledTimes(1)
 })
 
 it('should disconnect', () => {
-    stop()
+  stop()
 
-    expect(chatMocked.disconnect).toBeCalledWith()
-    expect(chatMocked.disconnect).toBeCalledTimes(1)
-    expect(chatMocked.disconnect).toHaveBeenCalledAfter(chatMocked.removeAllListeners);
+  expect(chatMocked.disconnect).toBeCalledWith()
+  expect(chatMocked.disconnect).toBeCalledTimes(1)
+  expect(chatMocked.disconnect).toHaveBeenCalledAfter(chatMocked.removeAllListeners)
 })

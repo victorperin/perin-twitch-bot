@@ -2,15 +2,15 @@ const commands = new Map()
 
 import telegramCommand, { name as telegramCommandName } from './commands/telegram'
 
-const commandImporter = (): Map<string, Function> => {
-    const commands = new Map()
+type CommandFunction = (a: string) => Promise<void>
 
-    //TODO: vai ser dinamico
-    commands.set(telegramCommandName, telegramCommand)
+const commandImporter = (): Map<string, CommandFunction> => {
+  const commands = new Map()
 
-    return commands
+  //TODO: vai ser dinamico
+  commands.set(telegramCommandName, telegramCommand)
+
+  return commands
 }
-
-
 
 export default commandImporter

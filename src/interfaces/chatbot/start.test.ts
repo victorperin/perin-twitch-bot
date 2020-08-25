@@ -13,23 +13,23 @@ beforeEach(jest.resetAllMocks)
 import startChat from './start'
 
 it('should call listeners', async () => {
-    await startChat()
+  await startChat()
 
-    expect(registerListeners).toBeCalledWith()
-    expect(registerListeners).toBeCalledTimes(1)
-    expect(registerListeners).toHaveBeenCalledBefore(chatMocked.connect);
+  expect(registerListenersMocked).toBeCalledWith()
+  expect(registerListenersMocked).toBeCalledTimes(1)
+  expect(registerListenersMocked).toHaveBeenCalledBefore(chatMocked.connect)
 })
 
 it('should call connect', async () => {
-    await startChat()
+  await startChat()
 
-    expect(chatMocked.connect).toBeCalledWith()
-    expect(chatMocked.connect).toBeCalledTimes(1)
+  expect(chatMocked.connect).toBeCalledWith()
+  expect(chatMocked.connect).toBeCalledTimes(1)
 })
 
 it('should join TWITCH_CHANNE', async () => {
-    await startChat()
+  await startChat()
 
-    expect(chatMocked.join).toBeCalledWith(process.env.TWITCH_CHANNEL)
-    expect(registerListeners).toBeCalledTimes(1)
+  expect(chatMocked.join).toBeCalledWith(process.env.TWITCH_CHANNEL)
+  expect(registerListenersMocked).toBeCalledTimes(1)
 })

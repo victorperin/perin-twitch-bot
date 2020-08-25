@@ -6,8 +6,8 @@ export { chat, channel } from './chat'
 export { default as start } from './start'
 export { default as stop } from './stop'
 export default {
-    chat,
-    channel,
-    stop,
-    start,
+  chat,
+  channel,
+  stop,
+  start,
 }
