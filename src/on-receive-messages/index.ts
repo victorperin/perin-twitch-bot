@@ -1,9 +1,9 @@
 import { PrivateMessages } from "twitch-js"
 
-export const commands = new Map()
-commands.set('default', (args: string) => { })
+import commandImporter from './command-importer'
 
-import './commands/telegram'
+const commands = commandImporter()
+
 
 const onReceivePrivateMessages = async (event: PrivateMessages): Promise<void> => {
     if (
