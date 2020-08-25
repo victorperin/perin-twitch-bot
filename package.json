@@ -6,7 +6,9 @@
   "scripts": {
     "linter": "eslint .",
     "build": "tsc",
-    "test": "jest"
+    "test": "jest",
+    "test:unit": "jest src/**/*.test.ts",
+    "test:e2e": "jest tests/e2e/*.test.ts"
   },
   "keywords": [],
   "author": "Victor Perin",
