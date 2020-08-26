@@ -12,7 +12,7 @@ const onReceivePrivateMessages = async (event: PrivateMessages): Promise<void> =
 
   const functionToBeExecuted = commands.get(command) || commands.get('default')
 
-  return functionToBeExecuted(argumentsAsString)
+  return functionToBeExecuted?.(argumentsAsString)
 }
 
 export default onReceivePrivateMessages

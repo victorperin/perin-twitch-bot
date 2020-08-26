@@ -9,4 +9,4 @@ const twitchAuth = {
 }
 
 export const { chat } = new TwitchJs(twitchAuth)
-export const channel = TWITCH_CHANNEL
+export const channel = TWITCH_CHANNEL || 'victor_perin_bot'
