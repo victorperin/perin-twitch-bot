@@ -8,7 +8,8 @@
     "build": "tsc",
     "test": "jest",
     "test:unit": "jest src/**/*.test.ts",
-    "test:e2e": "jest --passWithNoTests --collectCoverage=false --findRelatedTests"
+    "test:e2e": "jest tests/e2e/*.test.ts",
+    "test:diff": "jest --passWithNoTests --collectCoverage=false --findRelatedTests"
   },
   "keywords": [],
   "author": "Victor Perin",
