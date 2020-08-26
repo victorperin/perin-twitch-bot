@@ -27,9 +27,9 @@ it('should call connect', async () => {
   expect(chatMocked.connect).toBeCalledTimes(1)
 })
 
-it('should join TWITCH_CHANNE', async () => {
+it('should join TWITCH_CHANNEL', async () => {
   await startChat()
 
-  expect(chatMocked.join).toBeCalledWith(process.env.TWITCH_CHANNEL)
+  expect(chatMocked.join).toBeCalledWith('victor_perin_bot')
   expect(registerListenersMocked).toBeCalledTimes(1)
 })
