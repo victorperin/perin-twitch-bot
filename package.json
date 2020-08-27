@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "linter": "eslint .",
+    "linter": "eslint --cache",
     "build": "tsc",
     "test": "jest",
     "test:unit": "jest src/**/*.test.ts",
@@ -59,7 +59,7 @@
   },
   "lint-staged": {
     "*.ts": [
-      "eslint --cache --fix",
+      "npm run linter",
       "npm run test:diff"
     ]
   }
