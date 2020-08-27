@@ -1,18 +1,14 @@
 import TwitchJs, { Chat } from 'twitch-js'
 import { promisify } from 'util'
+import config from '../../src/config'
 
 const sleep = promisify(setTimeout)
 
-const { TWITCH_TEST_BOT_TOKEN } = process.env
-
 const testBotOptions = {
   username: 'cavaalo',
-  token: TWITCH_TEST_BOT_TOKEN,
+  token: config.twitch.token,
   log: { level: 'error' },
 }
-
-const BOT_CHANNEL = 'victor_perin_bot'
-process.env.TWITCH_CHANNEL = BOT_CHANNEL
 
 import { start, stop } from '../../src/interfaces/chatbot'
 
@@ -20,7 +16,7 @@ it('should respond to !telegram', async () => {
   const { chat: testBotChat } = new TwitchJs(testBotOptions)
 
   await testBotChat.connect()
-  await testBotChat.join(BOT_CHANNEL)
+  await testBotChat.join(config.twitch.channel)
 
   await testBotChat.on(Chat.Events.PRIVATE_MESSAGE, (event) => {
     expect(event.message).toBe('https://t.me/perin_na_twitch')
@@ -30,7 +26,7 @@ it('should respond to !telegram', async () => {
 
   await sleep(500)
 
-  await testBotChat.say(BOT_CHANNEL, '!telegram')
+  await testBotChat.say(config.twitch.channel, '!telegram')
 
   await sleep(500)
 

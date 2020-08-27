@@ -1,12 +1,11 @@
 import TwitchJs from 'twitch-js'
-
-const { TWITCH_BOT_TOKEN, TWITCH_CHANNEL } = process.env
+import config from '../../config'
 
 const twitchAuth = {
   username: 'victor_perin_bot',
-  token: TWITCH_BOT_TOKEN,
+  token: config.twitch.token,
   log: { level: 'error' },
 }
 
 export const { chat } = new TwitchJs(twitchAuth)
-export const channel = TWITCH_CHANNEL || 'victor_perin_bot'
+export const channel = config.twitch.channel
