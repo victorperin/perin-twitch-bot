@@ -7,8 +7,6 @@ import telegramCommand, { name as telegramCommandName } from './commands/telegra
 jest.mock('./commands/telegram')
 const mockedTelegramCommand = mocked(telegramCommand)
 
-beforeEach(jest.resetAllMocks)
-
 it('should return an map with all commands', () => {
   const response = commandImporter()
 

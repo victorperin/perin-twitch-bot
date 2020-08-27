@@ -8,8 +8,6 @@ import { chat } from './chat'
 jest.mock('./chat')
 const chatMocked = mocked(chat, true)
 
-beforeEach(jest.resetAllMocks)
-
 import listeners from './listeners'
 
 it('should listen to private messages', () => {

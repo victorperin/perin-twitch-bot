@@ -8,8 +8,6 @@ import registerListeners from './listeners'
 jest.mock('./listeners')
 const registerListenersMocked = mocked(registerListeners, true)
 
-beforeEach(jest.resetAllMocks)
-
 import startChat from './start'
 
 it('should call listeners', async () => {

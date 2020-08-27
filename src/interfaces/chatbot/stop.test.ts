@@ -4,8 +4,6 @@ import { chat } from './chat'
 jest.mock('./chat')
 const chatMocked = mocked(chat, true)
 
-beforeEach(jest.resetAllMocks)
-
 import stop from './stop'
 
 it('should removeAllListeners', () => {
