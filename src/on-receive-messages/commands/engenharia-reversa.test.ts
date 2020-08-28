@@ -1,6 +1,13 @@
 import { mocked } from 'ts-jest/utils'
 import { chat, channel } from '../../interfaces/chatbot'
-import config from '../../config'
+
+jest.mock('../../config', () => ({
+  twitch: {
+    token: 'a-fake-token', //TODO: remove
+    channel: 'a-fake-channel',
+  },
+  playlists: { engenhariaReversa: 'playlist-fake-url' },
+}))
 
 const chatMocked = mocked(chat, true)
 jest.mock('../../interfaces/chatbot')
@@ -12,7 +19,7 @@ import * as engRevesa from './engenharia-reversa'
 it('should say the URL to chat', () => {
   engRevesa.command('')
 
-  expect(chatMocked.say).toBeCalledWith(channel, config.playlists.engenhariaReversa)
+  expect(chatMocked.say).toBeCalledWith('a-fake-channel', 'playlist-fake-url')
 })
 
 it('should throw an error if say fails', async () => {
