@@ -7,11 +7,11 @@ jest.mock('../../interfaces/chatbot')
 
 beforeEach(jest.restoreAllMocks)
 
-import telegramCommand from './telegram'
+import * as telegram from './telegram'
 
 describe('Telegram command', () => {
   it('should say to chat the URL', () => {
-    telegramCommand('')
+    telegram.command('')
 
     expect(chatMocked.say).toBeCalledWith(channel, config.telegram.channel)
   })
@@ -20,6 +20,6 @@ describe('Telegram command', () => {
     const error = new Error()
     chatMocked.say.mockRejectedValue(error)
 
-    await expect(telegramCommand('')).toReject()
+    await expect(telegram.command('')).toReject()
   })
 })

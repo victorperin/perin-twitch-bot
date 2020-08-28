@@ -7,10 +7,10 @@ jest.mock('../../interfaces/chatbot')
 
 beforeEach(jest.restoreAllMocks)
 
-import engRevesa from './engenharia-reversa'
+import * as engRevesa from './engenharia-reversa'
 
 it('should say the URL to chat', () => {
-  engRevesa('')
+  engRevesa.command('')
 
   expect(chatMocked.say).toBeCalledWith(channel, config.playlists.engenhariaReversa)
 })
@@ -19,5 +19,5 @@ it('should throw an error if say fails', async () => {
   const error = new Error()
   chatMocked.say.mockRejectedValue(error)
 
-  await expect(engRevesa('')).toReject()
+  await expect(engRevesa.command('')).toReject()
 })
