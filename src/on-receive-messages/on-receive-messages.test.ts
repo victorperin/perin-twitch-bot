@@ -42,3 +42,14 @@ it('should do execute default action if no matches are found', async () => {
 
   expect(defaultCommandMock).toBeCalledTimes(1)
 })
+
+it('should do execute a command if matched', async () => {
+  const event = createMock<PrivateMessages>({ message: '!biruleibe' })
+
+  const biruleibeCommandMock = jest.fn()
+  commandsMock.set('biruleibe', biruleibeCommandMock)
+
+  await onReceiveMessages(event)
+
+  expect(biruleibeCommandMock).toBeCalledTimes(1)
+})
