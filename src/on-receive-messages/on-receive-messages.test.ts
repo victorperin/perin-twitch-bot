@@ -2,6 +2,9 @@ import { PrivateMessages } from 'twitch-js'
 import { createMock } from 'ts-auto-mock'
 import crypto from 'crypto'
 
+const commandsMock = new Map()
+jest.mock('./command-importer', () => () => commandsMock)
+
 import onReceiveMessages from '.'
 
 it('should do nothing if message does not start with !', () => {
@@ -29,4 +32,13 @@ it('should do nothing if message is bigger than 500 chars', async () => {
   substringSpy.mockRestore()
 })
 
-it.todo('should do execute default function if no matches are found')
+it('should do execute default action if no matches are found', async () => {
+  const event = createMock<PrivateMessages>({ message: '!teste' })
+
+  const defaultCommandMock = jest.fn()
+  commandsMock.set('default', defaultCommandMock)
+
+  await onReceiveMessages(event)
+
+  expect(defaultCommandMock).toBeCalledTimes(1)
+})
