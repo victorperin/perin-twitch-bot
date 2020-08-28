@@ -1,0 +1,6 @@
+node_modules/
+dist/
+.eslintcache
+tests/
+*.test.ts
+dist/**.d.ts

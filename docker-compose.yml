@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  bot:
+    build: .
+    environment:
+      - TWITCH_CHANNEL
+      - TWITCH_BOT_TOKEN
+    volumes:
+      - ./dist:/bot/
+      - ./package.json:/bot/package.json
+      - ./node_modules:/bot/node_modules
