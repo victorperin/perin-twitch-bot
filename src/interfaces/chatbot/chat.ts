@@ -8,4 +8,6 @@ const twitchAuth = {
 }
 
 export const { chat } = new TwitchJs(twitchAuth)
+
 export const channel = config.twitch.channel
+export const say = (text: string): Promise<void> => chat.say(channel, text)
