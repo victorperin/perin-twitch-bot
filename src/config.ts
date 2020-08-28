@@ -12,9 +12,14 @@ interface TelegramConfig {
   channel: string
 }
 
+interface PlaylistsConfig {
+  engenhariaReversa: string
+}
+
 interface Config {
   twitch: TwitchConfig
   telegram: TelegramConfig
+  playlists: PlaylistsConfig
 }
 
 const config: Config = {
@@ -24,6 +29,9 @@ const config: Config = {
   },
   telegram: {
     channel: 'https://t.me/perin_na_twitch',
+  },
+  playlists: {
+    engenhariaReversa: 'https://www.twitch.tv/collections/ksI8HBWCIxbqVA',
   },
 }
 

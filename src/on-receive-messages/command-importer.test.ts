@@ -3,9 +3,10 @@ import { mocked } from 'ts-jest/utils'
 import commandImporter from './command-importer'
 
 import telegramCommand, { name as telegramCommandName } from './commands/telegram'
-
 jest.mock('./commands/telegram')
 const mockedTelegramCommand = mocked(telegramCommand)
+
+jest.mock('./commands/engenharia-reversa')
 
 it('should return an map with all commands', () => {
   const response = commandImporter()
