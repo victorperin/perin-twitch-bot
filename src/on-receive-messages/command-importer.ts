@@ -1,14 +1,31 @@
-import * as telegram from './commands/telegram'
-import * as engReversa from './commands/engenharia-reversa'
+import { readdirSync } from 'fs'
 
-type CommandFunction = (argument: string) => Promise<void>
+// console.log(readdirSync(''))
 
-const commandImporter = (): Map<string, CommandFunction> => {
+const TEST_OR_TYPE_FILE_REGEX = /\.(d|test)\.ts$/i
+
+const COMMANDS_FOLDER_PATH = `${__dirname}/commands`
+const filesOnCommandsFolder = readdirSync(COMMANDS_FOLDER_PATH, { withFileTypes: true })
+
+const commandsFilesFilter = (fileName: string) => !TEST_OR_TYPE_FILE_REGEX.test(fileName)
+const commandsFiles = filesOnCommandsFolder.map((file) => file.name).filter(commandsFilesFilter)
+
+export type CommandFunction = (argument: string) => Promise<void>
+type Command = { name: string; command: CommandFunction }
+
+const importFilesAndAddToMap = (commands: Map<string, CommandFunction>) => async (
+  fileName: string,
+) => {
+  const command: Command = await import(`./commands/${fileName}`)
+  commands.set(command.name, command.command)
+}
+
+const commandImporter = async (): Promise<Map<string, CommandFunction>> => {
   const commands = new Map()
 
-  //TODO: vai ser dinamico
-  commands.set(telegram.name, telegram.command)
-  commands.set(engReversa.name, engReversa.command)
+  const importPromises = commandsFiles.map(importFilesAndAddToMap(commands))
+
+  await Promise.all(importPromises)
 
   return commands
 }
