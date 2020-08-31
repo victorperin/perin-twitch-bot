@@ -56,8 +56,8 @@ it('should ignore .d.ts files', async () => {
   expect(keys).toIncludeSameMembers([])
 })
 
-it('should ignore .test.ts files', async () => {
-  mockCommandsFolder(['d.test.ts'])
+it('should ignore .test.ts and .test.js files', async () => {
+  mockCommandsFolder(['d.test.ts', 'e.test.js'])
 
   const commandImporter = importCommandImporter()
   const commands = await commandImporter()

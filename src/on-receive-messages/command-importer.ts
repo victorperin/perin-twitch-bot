@@ -2,7 +2,7 @@ import { readdirSync } from 'fs'
 
 // console.log(readdirSync(''))
 
-const TEST_OR_TYPE_FILE_REGEX = /\.(d|test)\.ts$/i
+const TEST_OR_TYPE_FILE_REGEX = /\.(d|test)\.(ts|js)$/i
 
 const COMMANDS_FOLDER_PATH = `${__dirname}/commands`
 const filesOnCommandsFolder = readdirSync(COMMANDS_FOLDER_PATH, { withFileTypes: true })
