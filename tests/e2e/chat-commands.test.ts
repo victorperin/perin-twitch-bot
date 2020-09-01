@@ -37,3 +37,13 @@ it('should respond to !telegram', async (done) => {
   testBotChat.on(Chat.Events.PRIVATE_MESSAGE, callback)
   await testBotChat.say(config.twitch.channel, '!telegram')
 })
+
+it('should respond to !engenhariareversa', async (done) => {
+  const callback = (event: PrivateMessages) => {
+    expect(event.message).toBe('https://www.twitch.tv/collections/ksI8HBWCIxbqVA')
+    done()
+  }
+
+  testBotChat.on(Chat.Events.PRIVATE_MESSAGE, callback)
+  await testBotChat.say(config.twitch.channel, '!engenhariareversa')
+})
