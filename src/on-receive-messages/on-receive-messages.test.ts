@@ -53,3 +53,14 @@ it('should do execute a command if matched', async () => {
 
   expect(biruleibeCommandMock).toBeCalledTimes(1)
 })
+
+it('should do execute a command when matches lowercase', async () => {
+  const event = createMock<PrivateMessages>({ message: '!BiRuLeIbE' })
+
+  const biruleibeCommandMock = jest.fn()
+  commandsMock.set('biruleibe', biruleibeCommandMock)
+
+  await onReceiveMessages(event)
+
+  expect(biruleibeCommandMock).toBeCalledTimes(1)
+})

@@ -7,7 +7,7 @@ const commandsPromise = commandImporter()
 const onReceivePrivateMessages = async (event: PrivateMessages): Promise<void> => {
   if (!event.message.startsWith('!') || event.message.length > 500) return
 
-  const [command] = event.message.substring(1).split(' ', 1)
+  const [command] = event.message.substring(1).toLowerCase().split(' ', 1)
   const argumentsAsString = event.message.substr(command.length + 2)
 
   const commands = await commandsPromise
