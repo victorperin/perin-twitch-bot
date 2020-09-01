@@ -85,3 +85,14 @@ it('should reject if module do not exist', async () => {
   const commandImporter = importCommandImporter()
   await expect(commandImporter()).toReject()
 })
+
+it('should only cast to lower case command name', async () => {
+  mockVirtualCommandFile('somecommand.ts', 'SomeCommand')
+  mockCommandsFolder(['somecommand.ts'])
+
+  const commandImporter = importCommandImporter()
+  const commands = await commandImporter()
+  const keys = [...commands.keys()]
+
+  expect(keys).toIncludeSameMembers(['somecommand'])
+})

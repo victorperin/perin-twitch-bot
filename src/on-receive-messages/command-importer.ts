@@ -17,7 +17,7 @@ const importFilesAndAddToMap = (commands: Map<string, CommandFunction>) => async
   fileName: string,
 ) => {
   const command: Command = await import(`./commands/${fileName}`)
-  commands.set(command.name, command.command)
+  commands.set(command.name.toLowerCase(), command.command)
 }
 
 const commandImporter = async (): Promise<Map<string, CommandFunction>> => {
