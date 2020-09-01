@@ -4,7 +4,7 @@ import commandImporter from './command-importer'
 
 const commandsPromise = commandImporter()
 
-const onReceivePrivateMessages = async (event: PrivateMessages): Promise<void> => {
+const chatCommands = async (event: PrivateMessages): Promise<void> => {
   if (!event.message.startsWith('!') || event.message.length > 500) return
 
   const [command] = event.message.substring(1).toLowerCase().split(' ', 1)
@@ -17,4 +17,4 @@ const onReceivePrivateMessages = async (event: PrivateMessages): Promise<void> =
   return functionToBeExecuted?.(argumentsAsString)
 }
 
-export default onReceivePrivateMessages
+export default chatCommands
