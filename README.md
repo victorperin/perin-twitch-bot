@@ -1,4 +1,4 @@
-![Perin Bot Logo](.readme/logo.png)
+![Perin Bot Logo](.readme/logo.jpg)
 
 # Perin Twitch Bot
 
