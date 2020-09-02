@@ -17,7 +17,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: testing
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
@@ -27,7 +27,7 @@ jobs:
         TWITCH_BOT_TOKEN: ${{ secrets.TWITCH_BOT_TOKEN }}
         TWITCH_TEST_BOT_TOKEN: ${{ secrets.TWITCH_TEST_BOT_TOKEN }}
 
-    - run: npm ci
+    - run: npm install
     - run: npm run linter
     - run: npm test
     - run: npm run build
