@@ -14,6 +14,7 @@ npm install
 
 export TWITCH_CHANNEL=(NOME DO SEU CANAL)
 export TWITCH_BOT_TOKEN=(TOKEN DE ACESSO DA TWITCH)
+export TWITCH_TEST_BOT_TOKEN=(TOKEN DE ACESSO DE UM OUTRO USUARIO DA TWITCH)
 
 npm run build
 
@@ -25,6 +26,8 @@ Com isso, seu bot começa a ser executado no canal que você escolheu.
 ### Initial Configuration
 
 Para conseguir rodar os comandos acima, você precisa antes encontrar um token de acesso da twitch, que você consegue [aqui]().
+
+Lembre-se de que para rodar os testes e2e, é necessario ter 2 tokens de acesso, um na variavel `TWITCH_BOT_TOKEN` e o outro na `TWITCH_TEST_BOT_TOKEN`, o segundo deve vir de um outro usuário da twitch, para simular um usuario real.
 
 Além disso, será necessario que você saiba o nome do canal para onde esse bot vai rodar, no meu caso, `victor_perin`.
 
