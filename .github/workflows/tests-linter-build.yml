@@ -31,3 +31,9 @@ jobs:
         TWITCH_CHANNEL: victor_perin_bot
         TWITCH_BOT_TOKEN: ${{ secrets.TWITCH_BOT_TOKEN }}
         TWITCH_TEST_BOT_TOKEN: ${{ secrets.TWITCH_TEST_BOT_TOKEN }}
+
+    - name: release
+      uses: cycjimmy/semantic-release-action@v2.5.0
+      if: ${{ github.event_name === 'push' }}
+      env:
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}

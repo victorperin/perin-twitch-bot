@@ -45,7 +45,11 @@
     "ws": "^7.3.1"
   },
   "release": {
-    "branches": [ "primary" ]
+    "branches": [ "primary" ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator"
+    ]
   },
   "husky": {
     "hooks": {
