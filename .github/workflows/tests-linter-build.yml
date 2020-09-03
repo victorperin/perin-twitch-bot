@@ -26,7 +26,7 @@ jobs:
     - run: npm run build
     - run: npm test -- src/
     - run: npm test -- tests/e2e/
-      if: ${{ github.event_name === 'push' }}
+      if: ${{ github.event_name == 'push' }}
       env:
         TWITCH_CHANNEL: victor_perin_bot
         TWITCH_BOT_TOKEN: ${{ secrets.TWITCH_BOT_TOKEN }}
@@ -34,6 +34,6 @@ jobs:
 
     - name: release
       uses: cycjimmy/semantic-release-action@v2.5.0
-      if: ${{ github.event_name === 'push' }}
+      if: ${{ github.event_name == 'push' }}
       env:
         GH_TOKEN: ${{ secrets.GH_TOKEN }}
