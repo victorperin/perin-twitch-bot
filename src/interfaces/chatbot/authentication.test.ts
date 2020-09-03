@@ -2,8 +2,12 @@ import { mocked } from 'ts-jest/utils'
 import { createMock } from 'ts-auto-mock'
 import { ClientCredentialsAuthProvider } from 'twitch-auth'
 
-const getAccessTokenMock = jest.fn()
-const refreshMock = jest.fn()
+const AccessTokenMock = {
+  accessToken: 'tokenMock',
+}
+
+const getAccessTokenMock = jest.fn().mockResolvedValue(AccessTokenMock)
+const refreshMock = jest.fn().mockResolvedValue(AccessTokenMock)
 const ClientCredentialsAuthProviderMocked = mocked(ClientCredentialsAuthProvider, true)
 jest.mock('twitch-auth', () => ({
   ClientCredentialsAuthProvider: jest.fn().mockImplementation(() => ({
@@ -22,7 +26,7 @@ it('should return username property', async () => {
 })
 
 it('should return an access token', async () => {
-  getAccessTokenMock.mockResolvedValue('sgreyluy')
+  getAccessTokenMock.mockResolvedValue({ accessToken: 'sgreyluy' })
 
   const options = createMock<Options>({})
   const result = await authentication(options)
@@ -36,9 +40,10 @@ it('should return refresh function as onAuthenticationFailure', async () => {
   const options = createMock<Options>({})
 
   const result = await authentication(options)
-  result.onAuthenticationFailure()
+  const authenticationFalureResult = await result.onAuthenticationFailure()
 
   expect(refreshMock).toBeCalledTimes(1)
+  expect(authenticationFalureResult).toBe('tokenMock')
 })
 
 it('should call ClientCredentialsAuthProvider with clientd and secret', async () => {
