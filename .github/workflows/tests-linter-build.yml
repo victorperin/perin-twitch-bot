@@ -15,19 +15,19 @@ jobs:
       matrix:
         node-version: [14.x]
 
-    env:
-      TWITCH_CHANNEL: victor_perin_bot
-      TWITCH_BOT_TOKEN: ${{ secrets.TWITCH_BOT_TOKEN }}
-      TWITCH_TEST_BOT_TOKEN: ${{ secrets.TWITCH_TEST_BOT_TOKEN }}
-
     steps:
     - uses: actions/checkout@v2
-    - name: testing
-      uses: actions/setup-node@v1
+    - uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
 
     - run: npm install
     - run: npm run linter
-    - run: npm test
     - run: npm run build
+    - run: npm test -- src/
+    - run: npm test -- tests/e2e/
+      if: ${{ github.event_name === 'push' }}
+      env:
+        TWITCH_CHANNEL: victor_perin_bot
+        TWITCH_BOT_TOKEN: ${{ secrets.TWITCH_BOT_TOKEN }}
+        TWITCH_TEST_BOT_TOKEN: ${{ secrets.TWITCH_TEST_BOT_TOKEN }}
