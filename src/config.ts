@@ -1,11 +1,13 @@
 // this file serves only to import environment variables and constants to other files.
 // do not read environment variables outside this file
 
-const { TWITCH_BOT_TOKEN, TWITCH_CHANNEL } = process.env
+const { TWITCH_USERNAME, TWITCH_CHANNEL, TWITCH_CLIENT_ID, TWITCH_CLIENT_SECRET } = process.env
 
 interface TwitchConfig {
+  username: string
   channel: string
-  token: string
+  clientId: string
+  secret: string
 }
 
 interface TelegramConfig {
@@ -24,8 +26,10 @@ interface Config {
 
 const config: Config = {
   twitch: {
+    username: TWITCH_USERNAME || 'victor_perin_bot',
     channel: TWITCH_CHANNEL || 'victor_perin_bot',
-    token: TWITCH_BOT_TOKEN || '',
+    clientId: TWITCH_CLIENT_ID || '',
+    secret: TWITCH_CLIENT_SECRET || '',
   },
   telegram: {
     channel: 'https://t.me/perin_na_twitch',
