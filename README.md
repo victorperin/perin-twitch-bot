@@ -1,5 +1,6 @@
 ![Perin Bot Logo](.readme/logo.jpg)
 
+
 # Perin Twitch Bot
 
 Bot utilizado no canal da twitch do Perin. Serve para responder a comandos, resgate de recompensas e outras coisinhas meio estranhas mesmo.
