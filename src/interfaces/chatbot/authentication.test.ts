@@ -36,15 +36,15 @@ it('should return an access token', async () => {
   expect(result.token).toBe('sgreyluy')
 })
 
-it('should return refresh function as onAuthenticationFailure', async () => {
-  const options = createMock<Options>({})
+// it('should return refresh function as onAuthenticationFailure', async () => {
+//   const options = createMock<Options>({})
 
-  const result = await authentication(options)
-  const authenticationFalureResult = await result.onAuthenticationFailure()
+//   const result = await authentication(options)
+//   const authenticationFalureResult = await result.onAuthenticationFailure()
 
-  expect(refreshMock).toBeCalledTimes(1)
-  expect(authenticationFalureResult).toBe('tokenMock')
-})
+//   expect(refreshMock).toBeCalledTimes(1)
+//   expect(authenticationFalureResult).toBe('tokenMock')
+// })
 
 it('should call ClientCredentialsAuthProvider with clientd and secret', async () => {
   const options = createMock<Options>({ clientId: 'CLIENT_ID_MOCKED', secret: 'SECRET_MOCKED' })

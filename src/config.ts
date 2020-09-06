@@ -3,7 +3,7 @@
 
 const { TWITCH_USERNAME, TWITCH_CHANNEL, TWITCH_CLIENT_ID, TWITCH_CLIENT_SECRET } = process.env
 
-interface TwitchConfig {
+export interface TwitchConfig {
   username: string
   channel: string
   clientId: string

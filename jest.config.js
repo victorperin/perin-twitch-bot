@@ -8,6 +8,10 @@ module.exports = {
 
   globals: {
     'ts-jest': {
+      target: 'es2017',
+      module: 'ESNext',
+      moduleResolution: 'Node',
+      tsconfig: './tsconfig.json',
       compiler: 'ttypescript',
     },
   },

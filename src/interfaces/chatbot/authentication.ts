@@ -1,10 +1,12 @@
-import { ClientCredentialsAuthProvider, AccessToken } from 'twitch-auth'
+import { getTwitchAccessToken } from '@jlengstorf/get-twitch-oauth'
+
+const TWITCH_SCOPES = 'chat:edit chat:read'
+const getToken = () =>
+  getTwitchAccessToken({ scopes: TWITCH_SCOPES }).then((response) => response.access_token)
 
 export default async (input: Options): Promise<TwitchOptions> => {
-  const authProvider = new ClientCredentialsAuthProvider(input.clientId, input.secret)
-
-  const onAuthenticationFailure = () => authProvider.refresh().then((t) => t.accessToken)
-  const token = (await authProvider.getAccessToken()).accessToken
+  const onAuthenticationFailure = getToken
+  const token = await getToken()
 
   return {
     token: token,

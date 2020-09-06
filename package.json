@@ -41,12 +41,16 @@
     "typescript": "^4.0.2"
   },
   "dependencies": {
+    "@jlengstorf/get-twitch-oauth": "^1.0.1",
     "ramda": "^0.27.1",
+    "twitch-auth": "^4.2.0",
     "twitch-js": "^2.0.0-beta.33",
     "ws": "^7.3.1"
   },
   "release": {
-    "branches": [ "primary" ],
+    "branches": [
+      "primary"
+    ],
     "plugins": [
       "@semantic-release/commit-analyzer",
       "@semantic-release/release-notes-generator"

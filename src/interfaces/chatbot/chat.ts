@@ -1,17 +1,18 @@
-import TwitchJs, { Chat, TwitchJsOptions } from 'twitch-js'
-import config from '../../config'
+import TwitchJs, { Chat } from 'twitch-js'
+import config, { TwitchConfig } from '../../config'
 import authentication from './authentication'
-
-const authenticationConfig = config.twitch
 
 export let chat: Chat = new Chat({})
 
-export const startup = async (): Promise<void> => {
+export const startup = async (authenticationConfig: TwitchConfig): Promise<void> => {
   const twitchAuth = await authentication(authenticationConfig)
+
+  console.log(twitchAuth)
 
   const twitchJsConfig = {
     ...twitchAuth,
-    log: { level: 'error' },
+    clientId: authenticationConfig.clientId,
+    // log: { level: 'error' },
   }
 
   chat = new TwitchJs(twitchJsConfig).chat

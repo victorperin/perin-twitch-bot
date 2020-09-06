@@ -4,6 +4,9 @@
       "src/**/*.ts"
   ],
   "compilerOptions": {
+      "target": "es2017",
+      "module": "ESNext",
+      "moduleResolution": "Node",
       "declaration": true,
       "outDir": "./dist",
       "rootDir": "./src",

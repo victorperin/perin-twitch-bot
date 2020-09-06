@@ -3,9 +3,6 @@ import { promisify } from 'util'
 import config from '../../src/config'
 
 import { start, stop } from '../../src/interfaces/chatbot'
-import { chat } from '../../src/interfaces/chatbot/chat'
-
-const sleep = promisify(setTimeout)
 
 const testBotOptions = {
   username: 'cavaalo',
@@ -17,7 +14,7 @@ const { chat: testBotChat } = new TwitchJs(testBotOptions)
 
 beforeAll(async () => {
   await testBotChat.connect()
-  await testBotChat.join(config.twitch.channel)
+  await testBotChat.join('victor_perin_bot')
   await start()
 })
 
@@ -28,7 +25,7 @@ afterAll(() => {
   stop()
 })
 
-it('should respond to !telegram', async (done) => {
+it.only('should respond to !telegram', async (done) => {
   const callback = (event: PrivateMessages) => {
     expect(event.message).toBe('https://t.me/perin_na_twitch')
     done()
